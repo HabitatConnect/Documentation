@@ -48,7 +48,7 @@ marcel.plesky68@gmail.com}
 Habitat Connect is a web application designed for
 residents of Hanyang Habitat, our apartment complex, to stay
 connected, regardless of their cultural backgrounds. Our
-platform offers features like an announcement board, event
+platform offers features like an announcement board, birthday
 calendar, washer checker, and maintenance request page.
 Residents can easily receive important updates, plan events,
 check laundry availability, and report maintenance concerns –
@@ -140,16 +140,30 @@ Zendesk is a popular ticket management system used for customer support and issu
 
 % REQUIREMENT ANALYSIS
 \section{Requirement Analysis}
-\subsection{Sign up/Log in}
-If users are not registered on the database, they must sign up with an email address and a password. Moreover, to complete the registration process, it is necessary to provide a username, birthdate, and Habitat’s room number.
-Registered users can log in with their username and password.
-\subsection{Recent announcements}
-Recent Announcements is the main page. The user is able to see all announcements ever posted, except those deleted by their corresponding authors. Regarding announcements, the following actions are available for the user:
+\subsection{Register via Local Registration}
+Upon entering Habitat Connect, users will encounter a “Register” button situated in the top right corner of the screen. Clicking on this button redirects the user to the registration page, where Habitat Connect offers support for both local and Google OAuth registration. If the user chooses to register via local registration, they will be asked for a valid email address and a password. Once the user initiates the registration process, the inputs are processed internally. That is, we perform the checking of a valid email address and password format. If the validation is successful, we create the user’s account within our database.
+
+The next step of the registration process redirects users to the “Complete Profile” page, where they need to provide additional details to set the profile account. Users will provide a username, birthdate, and Habitat’s room number. The registration process is complete when the user clicks on the “Complete profile” button, successfully passing the internal input validation, and is then redirected to the main announcement page of Habitat Connect.
+\subsection{Log in via Local Registration}
+Upon entering Habitat Connect, users will notice a “Log in” button situated in the top right corner of the screen, positioned to the left of the registration button. Clicking on this button redirects the user to the login page, where Habitat Connects offers support for both local and Google OAuth login processes. If the user chooses to login locally, they will be asked for an email address and password. Then, the system conducts an internal search for the user in the database. If the user is found, they will be seamlessly redirected to the main announcement page of Habitat Connect. On the other hand, if the user credentials are not registered in the system’s database, the user will be prompted to provide alternative credentials
+\subsection{Register via Google OAuth}
+When users opt to click the "Register with Google" option, they initiate a process known as Signing up with Google OAuth, a robust and widely-adopted method that streamlines the registration process while enhancing security. This method empowers users to leverage their existing Google account credentials, granting controlled access to their Google account information to a third-party application or website without divulging their actual username and password. Google OAuth represents a pivotal advancement in the realm of online authentication, offering a secure and seamless means for users to interact with various online services and applications.
+
+Here's a more in-depth look at the process: users can initiate this process by clicking the “Register with Google” button upon entering Habitat Connect’s registration page. They are presented with a user-friendly interface that allows them to select their preferred Google account. If they aren't already logged in, they will need to input their Google email address and password. In line with user privacy, Google ensures users maintain control over their data. To this end, users are presented with a list of requested permissions that the third-party application (Habitat Connect) seeks. These permissions delineate the specific information and functionalities the application will be able to access. Users have the prerogative to meticulously review these permissions and choose to accept or decline them. After the user has meticulously reviewed and granted permissions, Google orchestrates the generation of an OAuth token. This token is subsequently relayed to Habitat Connect, effectively confirming the user's identity and consent. Our system then creates the user’s account within our database without validating the inputs, as Google has already conducted the necessary validations. It is important to note that when users register via Google OAuth, their Habitat Connect account lacks a password field. As a result, users who register with Google OAuth can only login using Google.
+
+The next step of the registration process redirects users to the “Complete Profile” page, where they complete their profile setup. From here, the process is the same as for the local registration.
+\subsection{Log in via Google OAuth}
+Logging into Habitat Connect with Google OAuth offers users a host of advantages, with convenience, security, and efficient access management being chief among them. This approach eliminates the cumbersome need to remember and juggle numerous usernames and passwords for different online platforms, simplifying the user experience significantly. Furthermore, users maintain a high level of control over their digital footprint, with the ability to easily revoke access to specific services through their Google account settings whenever they deem it necessary. This synergy between ease of use and robust data security underscores the appeal and practicality of logging in via Google OAuth. Once Google successfully completes the login validation, users are seamlessly redirected to the main announcement page of Habitat Connect.
+\subsection{Dashboard}
+The dashboard is the main page. The user is able to see all announcements ever posted, except those deleted by their corresponding authors. Regarding announcements, the following actions are available for the user:
 \begin{itemize}
-    \item Post an announcement: user can write text and insert images in an announcement. Once they choose to post the announcement, it will be available in the Recent announcements page to every user registered in Habitat Connect. The ownership of the announcement is registered as well.
-    \item Edit an announcement: users can edit their posted announcements.
-    \item Delete an announcement: users can delete their posted announcements.
-    \item Comment on an announcement: registered users can comment on posted announcements. Comments can only contain ASCII characters. Furthermore, the ownership of the comment is available for every user to see.
+    \item \textbf{Post} an announcement: users can write announcements that can only contain ASCII characters. Once they choose to post the announcement, it will be available in the dashboard to every user registered in Habitat Connect. The ownership of the announcement is registered as well..
+    \item \textbf{Edit} an announcement: users can edit the title and/or body of their posted announcements.
+    \item \textbf{Delete} an announcement: users are able to delete their posted announcements. They will no longer appear in the dashboard, and they will be removed from the system’s database.
+    \item \textbf{Comment} on an announcement: registered users can comment on posted announcements. Comments can only contain ASCII characters. Furthermore, the ownership of the comment is available for every user to see.
+    \item \textbf{Edit} a comment: users can edit their posted comments.
+    \item \textbf{Delete} a comment: users are able to delete their posted comments. They will no longer appear as comments in the announcement view, and they will be removed from the system’s database.
+    \item \textbf{Search} an announcement: users can search for announcements by entering keywords, which are then searched in both the title and body of the announcement.
 \end{itemize}
 \subsection{Calendar view}
 The system will provide a calendar view for users that automatically displays other users' birthdays based on their sign-up information. The calendar view will be monthly, and it can be switched between months with the help of navigation arrows on each side of the calendar. Users should be able to click on a specific date on the calendar to view the list of birthdays for that date, including the names of the users celebrating their birthdays.
@@ -163,10 +177,6 @@ This function will be on the left side of the main page in the form of an icon, 
 There may be additional features such as timers to display how long a washer has been in use, as well as user-friendly tooltips or information icons that can provide additional information or instructions.
 \subsection{Maintenance requests}
 Under the laundry checker icon, we can find the Maintenance Request icon. Once it is clicked, users will be taken to a new page. There will be two text boxes to create a Ticket: the first textbox will be the ticket name (for example “No Hot Water”), and the second text box will be the description of the maintenance issue with a maximum of 200 characters. Once the ticket is set up, there will be a Submit Ticket button at the bottom of the page. Once clicked, an email will automatically be sent to the apartment manager's private email. The page for the user after clicking the Submit Ticket button will also change. In the first half of the page, we will find a message saying “Your ticket has been submitted!”. Under that will be the status of the ticket which can be one of two options: Under Review (which will automatically be selected), and Ticket Completed. Once the user’s request has been completed in person, they can click the Ticket Completed option on the Maintenance Request page, which will update the user’s page back to the original create a ticket page.
-\subsection{Loading page}
-Upon opening our website, a 3 second screen with just our logo will appear on the screen. This is the general convention for websites, we can see an example of this in X or discord. After 3 seconds, the page will load into the recent announcements page. Moreover, the implementation of this loading screen is not merely a matter of aesthetic preference; it serves a functional purpose as well. The brief delay allows essential elements of the website to load efficiently, resulting in a smoother and more responsive browsing experience for our users. This loading screen will only be seen upon reloading the site, not when switching between the different functions. The reason for this is for the user's convenience, as they won’t need to wait for the page to load every time they want to use a new function.
-\subsection{Notifications}
-Users will only receive notifications regarding the status of their maintenance tickets, and the events that are occurring the day of. They can see their notifications on the top right of your screen, where the profile is located. Next to the profile, there will be a bell icon with a hand number, signifying how many notifications the user has received. Once the bell is clicked, users will see their notifications which again, can either be the ticket status or the events that are occurring that day. Users can click the Clear button to remove the notifications. However, once done, they cannot go back to see what was there. This will be the extent of the notifications, as we do not want to overflow it with other unnecessary added notifications.
 \subsection{User feedback Support}
 In order to manage the website without bugs, we need a substantial amount of feedback from users. This is a function that most every high level website has in order to enhance user experience. At the top right of the screen, where “Profile” is, one of the options under above “Settings” is a “Report Bug” option. Once clicked, the user will be taken to a separate page, where similar to an email, will have a Title and description text box with a maximum of 300 characters. Once both are filled and the user clicks “Submit”, an email will automatically be sent to an admin regarding the bug. This will also be used as a “Support Ticket”, whenever someone needs to get in contact with an admin regarding an issue they have about their account.
 \subsection{User profile options}
@@ -192,8 +202,6 @@ macOS & 12.5 Apple M1 Pro &
 - Unix-based \\
 & & 
 - Offers a powerful terminal for web development \\
-
-
 \hline
 \end{tabular}
 \caption{Working environment}
@@ -329,15 +337,47 @@ All software development tools are free of use. Furthermore, since Windows11 and
 Today people rely on widely-used software like Discord for chatting, Google Calendar for planning, and FamilyWall for staying organized. Our upcoming project takes inspiration from these popular tools and blends them into one. Our software will make it easy for people living in the same place to chat, schedule events, and share information, enhancing the way they interact and stay connected.
 
 \subsection{Task distribution}
-The responsibilities of each member are yet to be determined. However, we are thinking of splitting the workload in the following categories:
-\begin{itemize}
-    \item Management: responsible for checking up on each team member work and coordinating the overall work to meet due dates
-    \item Documentation: responsible for writing the pdf and creating the LaTex files
-    \item Front-end: responsible for developing the front-end side of the software
-    \item Back-end: responsible for developing the back-end side of the software
-\end{itemize}
-Our idea is that each team member will choose which skills they want to improve best, as long as the work is fairly divided. We believe that not dividing the tasks will result in an inefficient and not realistic way of software development.
+In such a collaborative project among three students, roles have been thoughtfully distributed to capitalize on our individual strengths. We believe that not dividing the tasks will result in an inefficient and not realistic way of software development. The workload can be divided into distinct categories, each focusing on a crucial aspect of Habitat Connect. The tasks are as follows:
 
+\begin{itemize}
+
+    \item \textbf{Management}: responsible for checking up on each team member work, ensuring adherence to deadlines, and coordinating the overall workflow
+    
+    \item \textbf{Documentation}: responsible for writing the pdf and creating the LaTex files, ensuring to present a well-structured and comprehensive overview of the project
+    
+    \item \textbf{Frontend}: charged with the responsibility of developing the frontend side of the software. This includes crafting the user interface, ensuring a seamless and interactive user experience, and design and implement every component for user engagement
+    
+    \item \textbf{Backend}: charged with the responsibility of developing the backend side of the software. This includes handling the database, server-side logic, and ensuring that every software component correctly adheres to all specified requirements
+    
+    \item \textbf{Deployment}: entrusted with the responsibility of deploying our web application. This involves managing the seamless transition of the software from the development environment to a live production environment
+    
+\end{itemize}
+
+After thoughtful evaluation, the final assignment of tasks to each team member has been documented in the following table:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{1cm}|p{1.5cm}|p{5cm} |}
+\hline
+\textbf{Name} & \textbf{Role} & \textbf{Responsibilities}\\
+
+\hline
+Laura & Backend Frontend Management Documentation & 
+As the backend developer, Laura constructs the software foundation code, translating project requirements into code, integrating external libraries, and addressing bugs to maintain a robust backend infrastructure. As a frontend developer, she designs and crafts a basic frontend infrastructure. In her management role, Laura oversees team dynamics and workflow, ensuring adherence to deadlines. As a documentation assistant, she reviews and improves documentation, actively participating in the creation of LaTeX files.\\
+
+\hline
+Marcel & Frontend Documentation & 
+As a frontend developer, Marcel reshapes the user interaction within the software system, rearranging Bootstrap elements and incorporating engaging content for an enhanced user experience. He actively participates in documentation tasks, providing critical assistance to the main documentation writer.\\
+
+\hline
+Christian & Frontend Documentation Deployment & 
+In his role as a frontend developer, Christian refines the user interface by rearranging Bootstrap elements. As the main documentation writer, he ensures documentation remains updated and aligned with code changes. Additionally, Christian manages web app deployment, creating a domain via .tech, configuring the deployment environment, and ensuring a seamless transition from the developed software to a live web application.\\
+
+\hline
+\end{tabular}
+\caption{Task Distribution}
+\label{tab1}
+\end{table}
 
 % SPECIFICATIONS
 \section{Specifications}
@@ -452,6 +492,13 @@ The calendar view can be directly accessed through the task bar on the left side
     \includegraphics[width=9cm]{figs/calendar_view.png}
     \caption{Calendar view page}
     \label{fig:Calendar view page}
+    \end{figure}
+Upon clicking a birthday on the calendar, a popup will showcase, which allows users to see the detailed view of the birthdays.
+    \begin{figure}[H]
+    \centering
+    \includegraphics{figs/birthday_details.png}
+    \caption{Birthday details}
+    \label{fig:Birthday details}
     \end{figure}
 
 
