@@ -147,11 +147,10 @@ The next step of the registration process redirects users to the “Complete Pro
 \subsection{Log in via Local Registration}
 Upon entering Habitat Connect, users will notice a “Log in” button situated in the top right corner of the screen, positioned to the left of the registration button. Clicking on this button redirects the user to the login page, where Habitat Connects offers support for both local and Google OAuth login processes. If the user chooses to login locally, they will be asked for an email address and password. Then, the system conducts an internal search for the user in the database. If the user is found, they will be seamlessly redirected to the main announcement page of Habitat Connect. On the other hand, if the user credentials are not registered in the system’s database, the user will be prompted to provide alternative credentials
 \subsection{Register via Google OAuth}
-When users opt to click the "Register with Google" option, they initiate a process known as Signing up with Google OAuth, a robust and widely-adopted method that streamlines the registration process while enhancing security. This method empowers users to leverage their existing Google account credentials, granting controlled access to their Google account information to a third-party application or website without divulging their actual username and password. Google OAuth represents a pivotal advancement in the realm of online authentication, offering a secure and seamless means for users to interact with various online services and applications.
-
-Here's a more in-depth look at the process: users can initiate this process by clicking the “Register with Google” button upon entering Habitat Connect’s registration page. They are presented with a user-friendly interface that allows them to select their preferred Google account. If they aren't already logged in, they will need to input their Google email address and password. In line with user privacy, Google ensures users maintain control over their data. To this end, users are presented with a list of requested permissions that the third-party application (Habitat Connect) seeks. These permissions delineate the specific information and functionalities the application will be able to access. Users have the prerogative to meticulously review these permissions and choose to accept or decline them. After the user has meticulously reviewed and granted permissions, Google orchestrates the generation of an OAuth token. This token is subsequently relayed to Habitat Connect, effectively confirming the user's identity and consent. Our system then creates the user’s account within our database without validating the inputs, as Google has already conducted the necessary validations. It is important to note that when users register via Google OAuth, their Habitat Connect account lacks a password field. As a result, users who register with Google OAuth can only login using Google.
+When users choose to register with Google, they engage in Google OAuth, a secure process simplifying registration. This method lets users authorize third-party apps like Habitat Connect, using Google credentials without revealing their password. Users initiate this process by clicking "Register with Google" on Habitat Connect's registration page. After selecting their Google account, they may need to log in if not already. Google prioritizes user privacy, presenting requested permissions for approval. Once granted, Google generates an OAuth token, confirming identity and consent. Our system creates the user's account in our database without further validation, leveraging Google's checks. It is important to note that when users register via Google OAuth, their Habitat Connect account lacks a password field. As a result, users who register with Google OAuth can only login using Google.
 
 The next step of the registration process redirects users to the “Complete Profile” page, where they complete their profile setup. From here, the process is the same as for the local registration.
+
 \subsection{Log in via Google OAuth}
 Logging into Habitat Connect with Google OAuth offers users a host of advantages, with convenience, security, and efficient access management being chief among them. This approach eliminates the cumbersome need to remember and juggle numerous usernames and passwords for different online platforms, simplifying the user experience significantly. Furthermore, users maintain a high level of control over their digital footprint, with the ability to easily revoke access to specific services through their Google account settings whenever they deem it necessary. This synergy between ease of use and robust data security underscores the appeal and practicality of logging in via Google OAuth. Once Google successfully completes the login validation, users are seamlessly redirected to the main announcement page of Habitat Connect.
 \subsection{Dashboard}
@@ -165,8 +164,10 @@ The dashboard is the main page. The user is able to see all announcements ever p
     \item \textbf{Delete} a comment: users are able to delete their posted comments. They will no longer appear as comments in the announcement view, and they will be removed from the system’s database.
     \item \textbf{Search} an announcement: users can search for announcements by entering keywords, which are then searched in both the title and body of the announcement.
 \end{itemize}
+% waiting
 \subsection{Calendar view}
 The system will provide a calendar view for users that automatically displays other users' birthdays based on their sign-up information. The calendar view will be monthly, and it can be switched between months with the help of navigation arrows on each side of the calendar. Users should be able to click on a specific date on the calendar to view the list of birthdays for that date, including the names of the users celebrating their birthdays.
+% waiting
 \subsection{Laundry checker}
 This function will be on the left side of the main page in the form of an icon, and once clicked, users will be taken to another page where they will see each washer, which is assigned a unique number. The status of each washer is displayed in the Status column, with different colors to make it visually clear: IN USE is displayed in red, AVAILABLE is displayed in green, and FINISHED is displayed in white. Visually, it will be in a table-like format for easy understanding. Each washer has a set of action buttons next to it. The available actions are:
 \begin{itemize}
@@ -175,10 +176,13 @@ This function will be on the left side of the main page in the form of an icon, 
 \end{itemize}
 
 There may be additional features such as timers to display how long a washer has been in use, as well as user-friendly tooltips or information icons that can provide additional information or instructions.
+% waiting
 \subsection{Maintenance requests}
 Under the laundry checker icon, we can find the Maintenance Request icon. Once it is clicked, users will be taken to a new page. There will be two text boxes to create a Ticket: the first textbox will be the ticket name (for example “No Hot Water”), and the second text box will be the description of the maintenance issue with a maximum of 200 characters. Once the ticket is set up, there will be a Submit Ticket button at the bottom of the page. Once clicked, an email will automatically be sent to the apartment manager's private email. The page for the user after clicking the Submit Ticket button will also change. In the first half of the page, we will find a message saying “Your ticket has been submitted!”. Under that will be the status of the ticket which can be one of two options: Under Review (which will automatically be selected), and Ticket Completed. Once the user’s request has been completed in person, they can click the Ticket Completed option on the Maintenance Request page, which will update the user’s page back to the original create a ticket page.
+% waiting
 \subsection{User feedback Support}
 In order to manage the website without bugs, we need a substantial amount of feedback from users. This is a function that most every high level website has in order to enhance user experience. At the top right of the screen, where “Profile” is, one of the options under above “Settings” is a “Report Bug” option. Once clicked, the user will be taken to a separate page, where similar to an email, will have a Title and description text box with a maximum of 300 characters. Once both are filled and the user clicks “Submit”, an email will automatically be sent to an admin regarding the bug. This will also be used as a “Support Ticket”, whenever someone needs to get in contact with an admin regarding an issue they have about their account.
+% waiting
 \subsection{User profile options}
 The user profile is a fundamental component of an application, serving as a repository of user-specific information and a platform for users to manage and personalize their experience within the system. The user profile typically encompasses several key options and functionalities designed to cater to the diverse needs and preferences of the application's users. However, to keep the concept of this web application, the changes the user can make to their profile is limited. On the “Profile” section and “Edit” subsection, the user will be taken to a new page, where they can apply one of 3 options regarding their account. The first option is to switch to anonymous mode, where their room number and name will be hidden. With this, the user is still able to read the announcement chat and use the washer checker, however they cannot type in the announcement chat or create a maintenance manager ticket. The second option is to edit their username, as upon signing up for our website, their real names are used for the users accounts. The users only have the option to change their usernames once a month. The last option they have is to change their profile pictures. There is no limit to this option and the users can change it as many times as they please.
 
@@ -209,6 +213,7 @@ macOS & 12.5 Apple M1 Pro &
 \end{table}
 
 Moreover, our development process will make use of some tools that can be found below.
+% waiting
 \begin{enumerate}
 
     \item \textsc{Svelte} is a JavaScript library that streamlines the process of building user interfaces. It compiles components directly into efficient, imperative code. This leads to faster rendering and a smoother user experience.
@@ -296,6 +301,7 @@ Moreover, our development process will make use of some tools that can be found 
 
 \vspace{12pt}
 Regarding the choice of programming language, we will be using the following:
+% waiting
 \begin{enumerate}
     \item \textsc{JavaScript} is a high-level programming language primarily known for its use in web development. It allows us to add interactivity and dynamic behavior to web pages. With Node.js, it can also be used for server-side development.
     \begin{figure}[H]
@@ -330,7 +336,7 @@ Regarding the choice of programming language, we will be using the following:
     \end{figure}
     
 \end{enumerate}
-
+% waiting
 All software development tools are free of use. Furthermore, since Windows11 and macOS are already in use, we will not count them as costs.
 
 \subsection{Software in use}
@@ -349,8 +355,6 @@ In such a collaborative project among three students, roles have been thoughtful
     
     \item \textbf{Backend}: charged with the responsibility of developing the backend side of the software. This includes handling the database, server-side logic, and ensuring that every software component correctly adheres to all specified requirements
     
-    \item \textbf{Deployment}: entrusted with the responsibility of deploying our web application. This involves managing the seamless transition of the software from the development environment to a live production environment
-    
 \end{itemize}
 
 After thoughtful evaluation, the final assignment of tasks to each team member has been documented in the following table:
@@ -363,15 +367,20 @@ After thoughtful evaluation, the final assignment of tasks to each team member h
 
 \hline
 Laura & Backend Frontend Management Documentation & 
-As the backend developer, Laura constructs the software foundation code, translating project requirements into code, integrating external libraries, and addressing bugs to maintain a robust backend infrastructure. As a frontend developer, she designs and crafts a basic frontend infrastructure. In her management role, Laura oversees team dynamics and workflow, ensuring adherence to deadlines. As a documentation assistant, she reviews and improves documentation, actively participating in the creation of LaTeX files.\\
+As the backend developer, this member is responsible for constructing the software foundation code. This involves turning our project requirements into code, integrating external libraries to enhance our project capabilities, and addressing bugs to maintain a robust and functional backend infrastructure.
+As frontend developer, this member undertook the responsibility of designing and crafting a basic frontend infrastructure, providing a solid starting point for the rest of the team.
+Moreover, this member’s management tasks included taking responsibility for overseeing the team dynamics and workflow. Not only involves a checking up on each team member’s work but also ensuring strict adherence to deadlines.
+Additionally, as a documentation assistant, this member was charged with the task of reviewing documentation for clarity, suggesting ideas for improvement and organization, and actively participating in the creation of LaTex files.\\
 
 \hline
 Marcel & Frontend Documentation & 
-As a frontend developer, Marcel reshapes the user interaction within the software system, rearranging Bootstrap elements and incorporating engaging content for an enhanced user experience. He actively participates in documentation tasks, providing critical assistance to the main documentation writer.\\
+As a frontend developer, this member assumed the responsibility of reshaping the user interaction within the software system. This involves not only the rearrangement of Bootstrap elements but also the incorporation of fresh and engaging content that contributed to an enhanced and visually appealing user experience. This member approach was not merely aesthetic but strategic, aiming to create an immersive and visually appealing environment that resonated with end users.
+Moreover, this member’s tasks also included an active participation in the documentation tasks, providing critical assistance to the main documentation writer.\\
 
 \hline
-Christian & Frontend Documentation Deployment & 
-In his role as a frontend developer, Christian refines the user interface by rearranging Bootstrap elements. As the main documentation writer, he ensures documentation remains updated and aligned with code changes. Additionally, Christian manages web app deployment, creating a domain via .tech, configuring the deployment environment, and ensuring a seamless transition from the developed software to a live web application.\\
+Christian & Frontend Documentation & 
+In his role as a frontend developer, this member’s tasks included refining the user interface by further rearranging bootstrap elements.
+As the main documentation writer, he was entrusted with documentation responsibilities, ensuring that all elements are constantly updated and aligned with code changes. This approach to documentation ensures that the project’s report remains accurate and reflective of the software’s evolving codebase.\\
 
 \hline
 \end{tabular}
@@ -383,7 +392,7 @@ In his role as a frontend developer, Christian refines the user interface by rea
 \section{Specifications}
 In the section below, we will provide a detailed description of the implementation process of each requirement.
 
-
+% waiting
 \subsection{Sign up/Log in}
 If logged out, or a user is entering the website for the first time, the first component that users will see is the login page, as the website is a private application not open for public use. This page will have two main functions to enter the main webpage, sign up and login. The user sign up process on Habitat Connect is the starting point for users to establish their digital presence. It allows them to create unique usernames, set up secure passwords, provide email addresses, and specify room numbers. These steps collectively enable users to register and create a personalized digital identity within the platform, enhancing their overall user experience.
     \begin{figure}[H]
@@ -625,6 +634,110 @@ Within the user profile, users can retain the ability to modify their username t
 If users want to further showcase their personality, they can add/edit their profile picture so that other users can see. There will be no restrictions for this feature, and users can change their profile pictures as much as they want.
 
 
+% Architecture Design & Implementation
+\section{Architecture Design \& Implementation}
+\subsection{Overall Architecture}
+In this subsection, we will provide a detailed description of the 
+overall system architecture. In the figure below, we can see the relationship between... % waiting
+
+\subsection{Directory Organization}
+By organizing our directory structure, we can maintain a clean and scalable codebase. We have defined a clear separation between frontend and backend components, allowing us to enhance code readability while streamlining the development and collaboration. Our overall directory structure is:
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{figs/overall_directory.png}
+    \caption{Overall directory organization}
+    \label{fig:Overall directory organization}
+    \end{figure}
+\section*{Module 1: Frontend}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{figs/frontend_module.png}
+    \caption{Frontend module}
+    \label{fig:Frontend module}
+    \end{figure}
+    
+\begin{enumerate}
+    \item \textsc{Purpose:} The frontend module is our project's user-facing interface, which is intended to be engaging and intuitive. The purpose of the frontend is enabling possibilities for creating announcements and repair requests, as well as real-time monitoring of washing machine statuses and more. This module ensures a seamless user experience by presenting data fetched from the backend, with client-side validation delivering quick feedback. It connects to backend APIs to do tasks including creating, updating, and deleting announcements and maintenance requests. The interface is responsive and not dependent on any specific devices, with a component-based architecture for modular development and scalability. The use of specific visual components improves the entire user experience by making interactions with announcements, calendar, maintenance requests, washing machine status, and profile setting more dynamic and interesting.
+
+    \item \textsc{Functionality:} The frontend functionality is crafted using a combination of HTML, CSS, and JavaScript, providing a solid foundation for the user interface. HTML structures the content, while CSS adds style, ensuring a visually appealing design. JavaScript, along with the EJS templating engine, provides dynamic content updates and interactivity. Bootstrap, a powerful CSS framework, enhances responsiveness and streamlines the design process with pre-built components. The integration of these technologies results in a maintainable structure, enabling efficient development. The application's frontend leverages AJAX for asynchronous data retrieval, ensuring a seamless and responsive user experience. Furthermore, responsive design principles are implemented to guarantee compatibility across various devices, making it easy for users to create announcements, submit maintenance requests, and more functionalities effortlessly.
+
+    \item \textsc{Location of Source Code:} Can be found in \texttt{/HabitatConnect/Frontend}
+
+    \item \textsc{Class Components:} \begin{enumerate}
+        \item Error pages
+        \begin{itemize}
+            \item[-] 401.ejs : this page represents an Error 401 - Unauthorized response, indicating that the user lacks the necessary credentials to access a specific resource. It displays an error message and an explanatory paragraph. Users are guided to navigate back to the main page through a "Back to Main" button
+            \item[-] 404.ejs : this page presents an Error 404 - Not Found message, indicating that the requested resource is not available. It displays an error message along with a descriptive paragraph. Users are guided to either check the URL or easily navigate back to the homepage using the "Back to Main" button
+        \end{itemize}
+        
+        \item public/css \& public/img
+        \begin{itemize}
+            \item[-] main.css : styling sheet for all the frontend components of this project
+            \item[-] /img : here are all images and videos stored that are being displayed in the user interface
+        \end{itemize}
+
+        % waiting
+        \item views/calendar
+        \begin{itemize}
+            \item[-]
+        \end{itemize}
+
+        \item views/checker
+        \begin{itemize}
+            \item[-] index.ejs: this page features a table displaying information about each washing machine, including its name, current status, and options to change its status. If there are washing machines available, the table is populated dynamically based on the data received. Users can see the current status of each machine and choose to either mark it as "In Use" or "Finished" using corresponding buttons. These buttons trigger form submissions, updating the status of the selected washing machine. If there are no washing machines available, a message with a small logo apologizes and suggests returning to the dashboard
+            \item[-] search-wm.ejs : this is a search-bar-component that serves as a search results display within the washer page. If search results are available, it shows a list of clickable washer-titles, each linking to the corresponding washer. If there are no search results, it displays a simple message indicating that no items were found.
+        \end{itemize}
+
+        \item views/profile
+        \begin{itemize}
+            \item[-] index.ejs: the profile page provides users with the ability to view and update their profile information. The page welcomes the user by their username and includes a form for updating various details. If there are any validation errors, they are displayed at the top in a red alert box. The form includes fields for updating the username, room number, and birthdate. Additionally, users can upload or change their profile picture. If a profile image is already set, it is displayed; otherwise, a default image or placeholder is shown. The "Update" button triggers the form submission for updating the profile
+        \end{itemize}
+
+        \item views/auth
+        \begin{itemize}
+            \item[-] complete-profile.ejs : this page is a form for users to submit essential details required to finalize their profile. The form includes input fields for a username, room number, and birthdate. Error handling is implemented to display specific error messages if any issues arise during form submission
+            \item[-] login.ejs: this is the login page where the user can either login with an email/password combination or use the Google Sign-In feature
+            \item[-] register.ejs: this page is used to create a new user in the system using either an email/password combination or the Google Sign-In information. Afterwards the user gets forwarded to complete their profile details
+        \end{itemize}
+
+        \item views/partials
+        \begin{itemize}
+            \item[-] footer.ejs : this is the footer element containing basic information about this project. The footer can be reused in the layouts for all pages
+            \item[-] header\_logged\_in.ejs: this is the header element including a title and search-bar. This specific header is only being displayed to logged in users. The difference is that instead of the login button there is a logout button. Reusable in all the layout pages
+            \item[-] header.ejs: this is the basic header element that is being shown to not logged in users, showing the login and register buttons. It is also missing the search-bar that is only displayed to logged in users. Used in the layout pages
+            \item[-] navbar.ejs: this is a vertical navigation bar that provides navigation buttons consisting of title and icon. The navigation bar is being reused in the layout pages as a component like the header and footer for example
+        \end{itemize}
+
+        \item views/maintenance
+        \begin{itemize}
+            \item[-] add-ticket.ejs : this page serves as the submission form for maintenance requests, allowing users to submit tickets with a title and description. It includes form validation to ensure that the title and description do not exceed specified character limits (500 characters for the title and 1000 characters for the description). If the form submission is successful, a modal ("addModal") appears to confirm the submission, providing information about the expected closure of the request within the next three days. In case of an error, such as empty fields or exceeding character limits, an error modal ("errorFormModal") is displayed, guiding users to correct the form issues
+            \item[-] index.ejs : this page displays maintenance requests, providing users with information about their open requests that are currently being worked on. Users can create new maintenance requests using the "Create new Request here" button if they don't have any open requests. For users with open requests, the page shows a table with the title and a truncated description of each request, along with an option to view/update each request. The table includes pagination for easy navigation through multiple requests. If a user doesn't have any open requests, a message encourages them to create a new request using the provided button
+            \item[-] search-ticket.ejs : this is a search-bar-component that serves as a search results display within the maintenance requests. If search results are available, it shows a list of clickable titles, each linking to the detailed view of the corresponding requests. If there are no search results, it displays a simple message indicating that no items were found
+            \item[-] view-ticket.ejs : this page allows users to view and update a specific maintenance request. The navigation provides a link back to the main Maintenance Request page and displays the title of the current ticket. The page includes a form for updating the ticket's title and description. Users can submit changes using the "Update" button, and there's an option to close the ticket using the "Close" button, which triggers a confirmation modal. If there's an error, it will be displayed at the top of the page in a red alert box
+        \end{itemize}
+
+        \item views/layouts
+        \begin{itemize}
+            \item[-] calendar.ejs, dashboard.ejs, front-page.ejs, laundry-checker.ejs, main.ejs, maintenance.ejs, profile.ejs : the layout structure of this project is designed for modularity and consistency across various views. Each layout follows an HTML structure, incorporating EJS for dynamic content rendering. The <head> section includes dynamic metadata, such as the page title and description. External styles are applied through Bootstrap v5.3.2 and a project-specific stylesheet. Google Fonts provides more design-choices. The layout is organized into sections: header, navbar (or sidebar), main content area, and footer, allowing for the inclusion of dynamic content through EJS partials. This approach promotes code reusability and a unified user interface with the ability to adjust each page’s layout easily
+        \end{itemize}
+
+        \item views/dashboard
+        \begin{itemize}
+            \item[-] add-ann.ejs : this page displays a form to add a new announcement to the announcement board. The form includes a title and textbody that gets sent to the backend and validated
+            \item[-] add-comm.ejs : users are able to post comments under a posted announcement. This page includes a form with a textbox that sends the comment to the backend and gets validated
+            \item[-] index.ejs : this page is a dynamic dashboard displaying announcements. It starts with a greeting to the user and offers a "Create" button to add new announcements. The main content area shows a grid of announcements, each represented by a bootstrap card with a title and a preview of the content. If there are no announcements, it prompts the user to create their first announcement with a call-to-action link. The page includes a pagination feature at the bottom to navigate through the announcements efficiently
+            \item[-] search-ann.ejs : this is a search-bar-component that serves as a search results display within the dashboard. If search results are available, it shows a list of clickable titles, each linking to the detailed view of the corresponding announcement. If there are no search results, it displays a simple message indicating that no items were found
+            \item[-] view-ann.ejs : this page serves as the view for a specific announcement within the dashboard. It displays the announcement's title, body, and creator, and provides functionality for the announcement owner to update or delete the announcement. Users who are not the announcement owner can only view the announcement details. Additionally, the page includes a comments section, allowing users to view existing comments and, if they are the comment creator, update or delete their comments
+        \end{itemize}
+    \end{enumerate}
+
+    % waiting
+    \item \textsc{Where is it taken from?:}
+
+    \item \textsc{How and why we use it?:} HTML, CSS, Bootstrap, JavaScript, and EJS form a robust frontend toolkit. HTML structures content, CSS styles layouts, and Bootstrap ensures consistency. JavaScript adds interactivity, enabling dynamic features. EJS, integrated with Node.js, dynamically generates HTML based on server-side data. Since we have Android and iOS users in our group we decided against developing a mobile application and instead chose to focus on a web-application that can provide us with new programming experiences and help us in future projects.
+\end{enumerate}
+
+
 
 % REFERENCES
 \begin{thebibliography}{00}
@@ -636,17 +749,20 @@ If users want to further showcase their personality, they can add/edit their pro
 \bibitem{b6} "Zendesk - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/zendesk}\\
 \bibitem{b7} "Svelte - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/sveltejs/svelte}\\
 \bibitem{b8} "Node.js - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/nodejs}\\
-\bibitem{b9} "Bootstrap - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/twbs/bootstrap}\\
-\bibitem{b10} "Axios - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/axios/axios}\\
-\bibitem{b11} "MongoDB," MongoDB. [Online]. Available: \url{https://www.mongodb.com}\\
-\bibitem{b12} "Visual Studio Code - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/microsoft/vscode}\\
-\bibitem{b13} "Git," Official Git Website. [Online]. Available: \url{https://git-scm.com/}\\
-\bibitem{b14} "Overleaf - Documentation," Overleaf. [Online]. Available: \url{https://www.overleaf.com/learn}\\
-\bibitem{b15} "Moqups - Online Mockups, Wireframes \& Design Tool," Moqups. [Online]. Available: \url{https://moqups.com/}\\
-\bibitem{b16} "JavaScript Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/JavaScript}\\
-\bibitem{b17} "HTML Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/HTML}\\
-\bibitem{b18} "CSS Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/CSS]}\\
-\bibitem{b19} "General Python FAQ," Python.org. [Online]. Available: \url{https://docs.python.org/3/faq/general.html}\\
+\bibitem{b9} "Node.js - Documentation," Node.js. [Online]. Available: \url{https://nodejs.org/en/docs}\\
+\bibitem{b10} "Express.js Documentation," Express.js. [Online]. Available: \url{https://expressjs.com/}\\
+\bibitem{b11} "Bootstrap - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/twbs/bootstrap}\\
+\bibitem{b12} "Axios - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/axios/axios}\\
+\bibitem{b13} "MongoDB," MongoDB. [Online]. Available: \url{https://www.mongodb.com}\\
+\bibitem{b14} "MongoDB - Documentation," MongoDB. [Online]. Available: \url{https://www.mongodb.com/docs/manual/}\\
+\bibitem{b15} "Visual Studio Code - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/microsoft/vscode}\\
+\bibitem{b16} "Git," Official Git Website. [Online]. Available: \url{https://git-scm.com/}\\
+\bibitem{b17} "Overleaf - Documentation," Overleaf. [Online]. Available: \url{https://www.overleaf.com/learn}\\
+\bibitem{b18} "Moqups - Online Mockups, Wireframes \& Design Tool," Moqups. [Online]. Available: \url{https://moqups.com/}\\
+\bibitem{b19} "JavaScript Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/JavaScript}\\
+\bibitem{b20} "HTML Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/HTML}\\
+\bibitem{b21} "CSS Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/CSS]}\\
+\bibitem{b22} "General Python FAQ," Python.org. [Online]. Available: \url{https://docs.python.org/3/faq/general.html}\\
 \end{thebibliography}
 
 
