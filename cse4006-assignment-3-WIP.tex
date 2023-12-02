@@ -15,11 +15,8 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Habitat Connect\\
-% We comment the sub-titles and funding for now
-% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and should not be used}
-% \thanks{Identify applicable funding agency here. If none, delete this.}
-}
+\title{Habitat Connect}
+
 
 
 \author{\IEEEauthorblockN{\textsuperscript{} Laura Rodríguez López}
@@ -41,7 +38,8 @@ Zürich, Switzerland \\
 marcel.plesky68@gmail.com}
 }
 \maketitle
-
+\thispagestyle{plain}
+\pagestyle{plain}
 
 % ABSTRACT
 \begin{abstract}
@@ -732,10 +730,109 @@ By organizing our directory structure, we can maintain a clean and scalable code
     \end{enumerate}
 
     % waiting
-    \item \textsc{Where is it taken from?:}
+    \item \textsc{Where is it taken from?}
 
-    \item \textsc{How and why we use it?:} HTML, CSS, Bootstrap, JavaScript, and EJS form a robust frontend toolkit. HTML structures content, CSS styles layouts, and Bootstrap ensures consistency. JavaScript adds interactivity, enabling dynamic features. EJS, integrated with Node.js, dynamically generates HTML based on server-side data. Since we have Android and iOS users in our group we decided against developing a mobile application and instead chose to focus on a web-application that can provide us with new programming experiences and help us in future projects.
+    \item \textsc{How and why we use it?} HTML, CSS, Bootstrap, JavaScript, and EJS form a robust frontend toolkit. HTML structures content, CSS styles layouts, and Bootstrap ensures consistency. JavaScript adds interactivity, enabling dynamic features. EJS, integrated with Node.js, dynamically generates HTML based on server-side data. Since we have Android and iOS users in our group we decided against developing a mobile application and instead chose to focus on a web-application that can provide us with new programming experiences and help us in future projects.
 \end{enumerate}
+
+\section*{Module 2: Backend}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{figs/backend_module.png}
+    \caption{Backend module}
+    \label{fig:Backend module}
+    \end{figure}
+    
+\begin{enumerate}
+    \item \textsc{Purpose:} The backend module forms the backbone of our project, focusing on server-side operations to handle requests from the frontend. It plays a pivotal role in managing and maintaining data integrity for user profiles, announcements, maintenance requests, and washing machine statuses. Through robust APIs, it facilitates seamless communication with the database, ensuring secure and scalable functionality. This backend system is designed to support critical processes such as user authentication, data storage, and retrieval, laying the foundation for a dynamic and engaging user experience crafted by the frontend module.
+
+    \item \textsc{Functionality:} The backend module’s functionality is made possible using Node.js, Express.js and Mongoose to handle server-side logic and data management. Its primary purpose is to process requests from the frontend, providing seamless communication with the database. Node.js ensures an architecture for efficient handling of concurrent operations. Express.js simplifies route handling and streamlining the development of APIs. Mongoose, a MongoDB object modeling tool, provides an elegant interface for interacting with our database, enhancing data integrity and retrieval. This backend system supports user authentication, manages data persistence for user profiles, announcements, maintenance requests, and washing machine statuses. By using these technologies, we achieve a scalable, efficient, and secure backend that complements the frontend's dynamic user experience.
+
+    \item \textsc{Location of Source Code:} Can be found in \texttt{/HabitatConnect/Backend}
+
+    \item \textsc{Class Components:} \begin{enumerate}
+        \item Environment settings
+        \begin{itemize}
+            \item[-] .env: this configuration file holds key-value pairs crucial for our application's functionality. It stores sensitive information such as the MongoDB URI, which connects our backend to the database hosted on MongoDB Atlas. The Google Client ID and Secret are essential for enabling Google OAuth, ensuring secure user authentication. The specified callback URLs, both for registration and login, are important for handling the redirection and authentication processes when users sign up or log in using their Google accounts
+            \item[-] app.js: the app.js file serves as the entry point for our Node.js Express application, managing various components. It employs middleware like express-ejs-layouts, method-override, and express-flash to enhance routing and manage HTTP methods effectively. The configuration includes sessions, utilizing express-session with a MongoDB store for persistent user data. Passport.js is integrated for authentication, enabling secure user management. Routes are organized and directed to respective controllers. The templating engine EJS is employed to structure dynamic views. Connection to the MongoDB database is established through the connectDB function. The file is structured to handle various routes, such as authentication, index, calendar, dashboard, laundry checker, maintenance, and profile. It also ensures a 404 response for any unrecognized paths. The application listens on the specified port
+        \end{itemize}
+        
+        \item server/config
+        \begin{itemize}
+            \item[-] db.js: this config file uses Mongoose to connect a Node.js application to a MongoDB database specified by the “MONGODB\_URI” environment variable. This module is crucial for maintaining a connection to the database, ensuring seamless data operations within the backend
+        \end{itemize}
+
+        \item server/middleware
+        \begin{itemize}
+            \item[-] checkAuth.js: this middleware component checks whether the user is authenticated. If the user is authenticated, it allows the request to proceed to the next route handler. If the user is not authenticated, it renders a "401 Unauthorized" view, indicating that the user lacks the necessary credentials to access the requested resource
+        \end{itemize}
+
+        \item server/routes
+        \begin{itemize}
+            \item[-] auth.js, calendar.js, dashboard.js, index.js, laundryChecker.js, maintenance.js, profile.js: all these routes are part of the system, providing the necessary endpoints like for example: user registration, login, dashboard access, maintenance ticket creation and many more. The actual implementation details are in the respective Controller module, which contains the logic for each route
+        \end{itemize}
+
+        \item server/controllers
+        \begin{itemize}
+            \item[-] authController.js: this controller handles user registration, login, and profile completion. It supports both local and Google-based registration and login. For local registration, users provide an email and password, which is securely hashed and stored in the database. Google registration and login use OAuth2.0, allowing users to sign in with their Google accounts. The system also ensures a complete user profile with validation for username, room number, and birthdate. Users can update their profiles, and errors are displayed when validation fails
+            \item[-] calendarController.js: this controller provides user birthdays and the current date. User data, including user IDs, usernames, and birthdates, is fetched from the database
+            \item[-] checkerController.js: this controller manages the logic related to washing machines, such as retrieving their status, updating status based on user input, and handling search functionality. Additionally it controls the amount of washing machines that should be shown per page
+            \item[-] dashboardController.js: this controller, associated with announcements and comments in the Dashboard page, handles views for displaying, updating, and deleting announcements. Users can add comments, update them and perform searches. The controller ensures length validation for titles, bodies, and comments, redirecting appropriately after each operation
+            \item[-] mainController.js: this controller manages views for the homepage of the web application. The homepage displays the main content with a layout for the front page
+            \item[-] maintenanceController.js: this controller manages maintenance-related functionalities, including viewing, updating, deleting, adding and searching tickets. The "maintenance" view displays a paginated list of maintenance tickets for the user, with options to view, update, and delete each ticket. Users can also add new maintenance tickets, search for specific tickets, and view detailed information about a specific ticket. The controller ensures that users can only access and modify their own tickets
+            \item[-] profileController.js: this controller handles profile-related functionalities. The "profile" view displays the user's profile information, including username, room number and birthdate. Users can update their profiles by submitting the provided form, and the controller validates the input data, ensuring that the username is within a certain character limit, the room number is within a specified range and the birthdate is in a valid format and not in the future. If there are errors in the input data, the controller renders the profile view again with error messages. If the update is successful, the user is redirected to the profile page
+        \end{itemize}
+
+        \item server/models
+
+        All the models are designed to interact with the appropriate MongoDB collection in a Node.js application using Mongoose.
+        \begin{itemize}
+            \item[-] Announcements.js: this model represents announcements in a MongoDB database. It includes fields for the announcement's owner, title, body, creation date, last update date, and an array of references to associated comments
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=5cm]{figs/announcement_schema.png}
+            \caption{Announcement schema}
+            \label{fig:Announcement Schema}
+            \end{figure}
+            \item[-] Comment.js: this model represents announcement comments. It includes fields for the ticket's owner, title, body, creation date, and last update date
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=5cm]{figs/comment_schema.png}
+            \caption{Comment schema}
+            \label{fig:Comment Schema}
+            \end{figure}
+            \item[-] Ticket.js: this model represents maintenance tickets. It includes fields for the ticket's owner, title, body, creation date, and last update date. Additionally, the model is configured with an index to automatically expire tickets after 3 days, enhancing data management
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=5cm]{figs/ticket_schema.png}
+            \caption{Ticket schema}
+            \label{fig:Ticket Schema}
+            \end{figure}
+            \item[-] User.js: this model includes fields such as email, password, googleId, username, profileImage, birthdate, and roomNumber. Each field has specific validation criteria. The model is designed to manage user information, providing a structured schema for registration, authentication, and profile management within the application
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=5cm]{figs/user_schema.png}
+            \caption{User schema}
+            \label{fig:User Schema}
+            \end{figure}
+            \item[-] WashingMachine.js: this model represents the status of a washing machine. It includes fields for “status” and “updatedAt”. The “status” field has possible values of “Available” and “In use”, with a default value of “Available”. This model is designed to manage and track the status of washing machines in the application
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=5cm]{figs/washing_machine_schema.png}
+            \caption{Washing Machine schema}
+            \label{fig:Washing Machine Schema}
+            \end{figure}
+        \end{itemize}
+
+        
+    \end{enumerate}
+
+    % waiting
+    \item \textsc{Where is it taken from?}
+
+    \item \textsc{How and why we use it?} We chose this backend technology because it aligns with modern web development practices, emphasizing scalability and maintainability. In Visual Studio Code, we use Node.js and Express for development. This helps us write and organize code easily. Opting for Node.js and MongoDB helps us gain valuable experience with these relevant technologies for future projects.
+\end{enumerate}
+
 
 
 
@@ -758,7 +855,7 @@ By organizing our directory structure, we can maintain a clean and scalable code
 \bibitem{b15} "Visual Studio Code - GitHub Repository," GitHub. [Online]. Available: \url{https://github.com/microsoft/vscode}\\
 \bibitem{b16} "Git," Official Git Website. [Online]. Available: \url{https://git-scm.com/}\\
 \bibitem{b17} "Overleaf - Documentation," Overleaf. [Online]. Available: \url{https://www.overleaf.com/learn}\\
-\bibitem{b18} "Moqups - Online Mockups, Wireframes \& Design Tool," Moqups. [Online]. Available: \url{https://moqups.com/}\\
+\bibitem{b18} "Moqups - Online Moqups, Wireframes \& Design Tool," Moqups. [Online]. Available: \url{https://moqups.com/}\\
 \bibitem{b19} "JavaScript Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/JavaScript}\\
 \bibitem{b20} "HTML Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/HTML}\\
 \bibitem{b21} "CSS Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/CSS]}\\
