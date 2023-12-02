@@ -650,10 +650,10 @@ By organizing our directory structure, we can maintain a clean and scalable code
     \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{figs/frontend_module.png}
-    \caption{Frontend module}
+    \caption{Frontend module (See Table \ref{tab: Frontend Module})}
     \label{fig:Frontend module}
     \end{figure}
-    
+
 \begin{enumerate}
     \item \textsc{Purpose:} The frontend module is our project's user-facing interface, which is intended to be engaging and intuitive. The purpose of the frontend is enabling possibilities for creating announcements and repair requests, as well as real-time monitoring of washing machine statuses and more. This module ensures a seamless user experience by presenting data fetched from the backend, with client-side validation delivering quick feedback. It connects to backend APIs to do tasks including creating, updating, and deleting announcements and maintenance requests. The interface is responsive and not dependent on any specific devices, with a component-based architecture for modular development and scalability. The use of specific visual components improves the entire user experience by making interactions with announcements, calendar, maintenance requests, washing machine status, and profile setting more dynamic and interesting.
 
@@ -739,7 +739,7 @@ By organizing our directory structure, we can maintain a clean and scalable code
     \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{figs/backend_module.png}
-    \caption{Backend module}
+    \caption{Backend module (See Table \ref{tab: Backend Module})}
     \label{fig:Backend module}
     \end{figure}
     
@@ -833,6 +833,81 @@ By organizing our directory structure, we can maintain a clean and scalable code
     \item \textsc{How and why we use it?} We chose this backend technology because it aligns with modern web development practices, emphasizing scalability and maintainability. In Visual Studio Code, we use Node.js and Express for development. This helps us write and organize code easily. Opting for Node.js and MongoDB helps us gain valuable experience with these relevant technologies for future projects.
 \end{enumerate}
 
+\section*{Module 3: Database - MongoDB}
+\begin{enumerate}
+    \item \textsc{Purpose:} MongoDB serves as the primary database solution for our application, providing a flexible and scalable storage system for managing various data types.
+
+    \item \textsc{Functionality:} MongoDB is a NoSQL database that excels in handling unstructured and semi-structured data. It supports a document-oriented data model, allowing us to store and retrieve complex data structures with ease.
+
+    \item \textsc{Location of Source Code:} Can be found in \texttt{/HabitatConnect/Backend}
+
+    \item \textsc{Class Components:} The components consist of schemas and models that define the structure and behavior of the data stored in MongoDB. These components include schemas for users, announcements, comments, tickets, and washing machines like mentioned in the backend part.
+
+    \item \textsc{Where is it taken from?} MongoDB is an open-source, document-oriented database system. We utilize the official MongoDB-Node.js driver and Mongoose, an ODM (Object Data Modeling) library for MongoDB and Node.js, to interact with the database.
+
+    \item \textsc{How and why we use it?} We chose MongoDB for our database because it's flexible and can handle a lot of different types of data. This is important for us because our data needs might change over time. MongoDB's way of storing data is similar to how JavaScript works, which makes it easy to connect with our Node.js backend. To manage documents directly we use the cloud based MongoDB Atlas where everything can be configured. Using MongoDB fits well with our goal of creating a modern and scalable web app, making sure users have a smooth and responsive experience.
+\end{enumerate}
+
+
+% AUXILIARY TABLES
+\section*{Auxiliary Tables}
+\begin{table}[H]
+\begin{tabular}{| p{5cm}|p{3cm} |}
+\hline
+\textbf{Directory} & \textbf{File Name}\\
+\hline
+/HabitatConnect/Frontend/ & \begin{tabular}[t]{@{}l@{}}.gitignore\\git\\package.json\\package-lock.json\\README.md\end{tabular} \\
+\hline
+/HabitatConnect/Frontend/public/css & main.css \\
+\hline
+/HabitatConnect/Frontend/public/img & \begin{tabular}[t]{@{}l@{}}announcement.png\\calendar.png\\hanyang-habitat.png\\hanyang-habitat-small.png\\hyh\_timelapse.mp4\\maintenance.png\\profile.jpeg\\profile\_tmp.jpg\\washer.png\end{tabular} \\
+\hline
+/HabitatConnect/Frontend/views & \begin{tabular}[t]{@{}l@{}}401.ejs\\404.ejs\\about.ejs\\index.ejs\end{tabular}\\
+\hline
+/HabitatConnect/Frontend/views/auth & \begin{tabular}[t]{@{}l@{}}complete-profile.ejs\\login.ejs\\register.ejs\end{tabular}\\
+\hline
+/HabitatConnect/Frontend/views/calendar & index.ejs\\
+\hline
+/HabitatConnect/Frontend/views/checker & \begin{tabular}[t]{@{}l@{}}index.ejs\\search-wm.ejs\end{tabular}\\
+\hline
+/HabitatConnect/Frontend/views/dashboard & \begin{tabular}[t]{@{}l@{}}add-ann.ejs\\add-comm.ejs\\index.ejs\\search-ann.ejs\\view-ann.ejs\end{tabular}\\
+\hline
+/HabitatConnect/Frontend/views/layouts& \begin{tabular}[t]{@{}l@{}}calendar.ejs\\dashboard.ejs\\front-page.ejs\\laundry-checker.ejs\\main.ejs\\maintenance.ejs\\profile.ejs\end{tabular}\\
+\hline
+/HabitatConnect/Frontend/views/maitenance & \begin{tabular}[t]{@{}l@{}}add-ticket.ejs\\index.ejs\\search-ticket.ejs\\view-ticket.ejs\end{tabular}\\
+\hline
+/HabitatConnect/Frontend/views/partials & \begin{tabular}[t]{@{}l@{}}footer.ejs\\header.ejs\\header\_logged\_in.ejs\\navbar.ejs\end{tabular}\\
+\hline
+/HabitatConnect/Frontend/views/profile & index.ejs\\
+\hline
+\end{tabular}
+\caption{Frontend Module Table}
+\label{tab: Frontend Module}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{5cm}|p{3cm} |}
+\hline
+\textbf{Directory} & \textbf{File Name}\\
+\hline
+/HabitatConnect/Backend/ & \begin{tabular}[t]{@{}l@{}}.env\\.gitignore\\app.js\\package.json\\package-lock.json\\README.md\end{tabular} \\
+\hline
+/HabitatConnect/Backend/node\_modules & (Node.js Project Dependencies) \\
+\hline
+/HabitatConnect/Backend/server/config & db.js\\
+\hline
+/HabitatConnect/Backend/server/controllers & \begin{tabular}[t]{@{}l@{}}authController.js\\calendarController.js\\checkerController.js\\dashboardController.js\\mainController.js\\maintenanceController.js\\profileController.js\end{tabular}\\
+\hline
+/HabitatConnect/Backend/server/middleware & checkAuth.js\\
+\hline
+/HabitatConnect/Backend/server/models & \begin{tabular}[t]{@{}l@{}}Announcements.js\\Comment.js\\Ticket.js\\User.js\\WashingMachine.js\end{tabular}\\
+\hline
+/HabitatConnect/Backend/server/routes & \begin{tabular}[t]{@{}l@{}}auth.js\\calendar.js\\dashboard.js\\index.js\\laundryChecker.js\\maintenance.js\\profile.js\end{tabular}\\
+\hline
+\end{tabular}
+\caption{Backend Module Table}
+\label{tab: Backend Module}
+\end{table}
 
 
 
@@ -861,6 +936,5 @@ By organizing our directory structure, we can maintain a clean and scalable code
 \bibitem{b21} "CSS Documentation," Mozilla Developer Network (MDN). [Online]. Available: \url{https://developer.mozilla.org/en-US/docs/Web/CSS]}\\
 \bibitem{b22} "General Python FAQ," Python.org. [Online]. Available: \url{https://docs.python.org/3/faq/general.html}\\
 \end{thebibliography}
-
 
 \end{document}
