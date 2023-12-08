@@ -7,3 +7,4 @@ Happy reading!
 # Backend and Frontend
 
 Don't forget to check out the HabitatConnect [Backend](https://github.com/HabitatConnect/Backend) and [Frontend](https://github.com/HabitatConnect/Frontend) repositories!
+Here is our project in action! https://www.youtube.com/watch?v=OTwkyZ7ezA4
